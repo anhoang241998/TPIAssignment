@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tourist_nav.xml"
+    app:startDestination="@id/touristListFragment">
+
+    <fragment
+        android:id="@+id/touristListFragment"
+        android:name="com.annguyenhoang.tpiassignment.views.tourist_list.TouristListFragment"
+        android:label="TouristListFragment" />
+</navigation>
