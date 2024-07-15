@@ -3,4 +3,21 @@
 
     <string name="tourists_list_fragment_title">TaipeiTour</string>
     <string name="switch_language">Switch language</string>
+
+    <string name="bad_gateway_error">The server was unavailable now.</string>
+    <string name="bad_request_error">Request params was not corrected format. Please try again.</string>
+    <string name="conflict_error">Your request was existed.</string>
+    <string name="forbidden_error">Your request was not completed now. Please try again.</string>
+    <string name="gateway_timeout_error">Timeout exceed. Please try again.</string>
+    <string name="internal_server_error">The server was unavailable now. Please try again.</string>
+    <string name="method_not_allow_error">Your request was not have the correct method.</string>
+    <string name="not_found_error">Your request url was not found.</string>
+    <string name="other_error">Something went wrong. Please try again.</string>
+    <string name="service_unavailable_error">The server was unavailable now.</string>
+    <string name="too_many_requests_error">The server was handled too many request from this device.</string>
+    <string name="unauthorized_error">Your session was timeout. Please login again.</string>
+    <string name="no_internet_connection_error">No internet connection. Please check your internet.</string>
+    <string name="image_tourist">image_tourist</string>
+    <string name="ic_next">ic_next</string>
+    <string name="img_error">img_error</string>
 </resources>

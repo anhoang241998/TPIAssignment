@@ -19,17 +19,25 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://www.travel.taipei/open-api/vi/\"")
+        }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isDebuggable = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+
+            buildConfigField("String", "BASE_URL", "\"https://www.travel.taipei/open-api/vi/\"")
         }
     }
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -49,9 +57,19 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // coroutine
+    implementation(libs.kotlin.coroutines.core)
+    implementation(libs.android.coroutine)
+
     // navigation
     implementation(libs.jetpack.navigation.fragment)
     implementation(libs.jetpack.navigation.ui)
+
+    // retrofit2 + gson
+    implementation(libs.gson)
+    implementation(libs.okhttp.logging)
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.converter)
 
     // koin
     implementation(platform(libs.koin.bom))
@@ -59,4 +77,17 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.koin.android.compat)
     implementation(libs.koin.androidx.navigation)
+
+    // coil
+    implementation(libs.coil)
+
+    // Logger
+    implementation(libs.logger)
+    implementation(libs.timber)
+
+    // desugar for android backward compatibility
+    coreLibraryDesugaring(libs.desugar)
+
+    // skeleton loading
+    implementation(libs.skeletonLoading)
 }

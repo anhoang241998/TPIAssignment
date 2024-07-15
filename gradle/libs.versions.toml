@@ -12,6 +12,16 @@ constraintlayout = "2.1.4"
 koinBom = "3.5.6"
 jetpackNavigation = "2.7.7"
 safeArgsVersion = "2.7.7"
+okhttp = "4.12.0"
+gson = "2.11.0"
+retrofit2 = "2.11.0"
+coroutineCore = "1.9.0-RC"
+coroutineAndroid = "1.7.3"
+logger = "2.2.0"
+timber = "5.0.1"
+desugar = "2.0.4"
+coil = "2.6.0"
+skeletonLoading = "5.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -23,9 +33,19 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
+# Coroutine Core
+kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutineCore" }
+android-coroutine = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutineAndroid" }
+
 # navigation
 jetpack-navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "jetpackNavigation" }
 jetpack-navigation-ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "jetpackNavigation" }
+
+# retrofit2 + gson
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+retrofit2 = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit2" }
+retrofit2-converter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit2" }
 
 # Koin
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom" }
@@ -33,6 +53,19 @@ koin-core = { module = "io.insert-koin:koin-core" }
 koin-android = { module = "io.insert-koin:koin-android" }
 koin-android-compat = { module = "io.insert-koin:koin-android-compat" }
 koin-androidx-navigation = { module = "io.insert-koin:koin-androidx-navigation" }
+
+# Coil
+coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+
+# Logging: Timber
+logger = { group = "com.orhanobut", name = "logger", version.ref = "logger" }
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+
+# desugar for android backward compatibility
+desugar = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugar" }
+
+# skeleton loading
+skeletonLoading = { group = "com.faltenreich", name = "skeletonlayout", version.ref = "skeletonLoading" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
