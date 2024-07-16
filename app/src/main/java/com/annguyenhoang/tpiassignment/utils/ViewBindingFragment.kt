@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
@@ -21,6 +22,8 @@ abstract class ViewBindingFragment<VB : ViewBinding> : Fragment() {
             "Cannot find the binding of this fragment"
         }
 
+    abstract val screenName: String
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,6 +36,7 @@ abstract class ViewBindingFragment<VB : ViewBinding> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews(savedInstanceState)
+        initializeToolBar()
         initControls()
     }
 
@@ -43,5 +47,9 @@ abstract class ViewBindingFragment<VB : ViewBinding> : Fragment() {
 
     open fun initViews(savedInstanceState: Bundle?) {}
     open fun initControls() {}
+
+    open fun initializeToolBar() {
+        (activity as? AppCompatActivity)?.supportActionBar?.title = this.screenName
+    }
 
 }

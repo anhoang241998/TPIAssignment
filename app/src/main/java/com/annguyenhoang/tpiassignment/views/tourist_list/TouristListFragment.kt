@@ -8,11 +8,8 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.flowWithLifecycle
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,13 +20,13 @@ import com.annguyenhoang.tpiassignment.databinding.FragmentTouristListBinding
 import com.annguyenhoang.tpiassignment.utils.UiText
 import com.annguyenhoang.tpiassignment.utils.ViewBindingFragment
 import com.annguyenhoang.tpiassignment.utils.gone
+import com.annguyenhoang.tpiassignment.utils.observeFlow
 import com.annguyenhoang.tpiassignment.utils.show
 import com.annguyenhoang.tpiassignment.views.tourist_list.adapters.TouristsAdapter
 import com.annguyenhoang.tpiassignment.views.tourist_list.models.Tourist
 import com.annguyenhoang.tpiassignment.views.tourist_list.models.TouristLoadMore
 import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.createSkeleton
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.UUID
 
@@ -37,6 +34,9 @@ class TouristListFragment : ViewBindingFragment<FragmentTouristListBinding>(), M
 
     override val fragmentInflater: (inflater: LayoutInflater, parent: ViewGroup?, attachToParent: Boolean) -> FragmentTouristListBinding
         get() = FragmentTouristListBinding::inflate
+
+    override val screenName: String
+        get() = activity?.getString(R.string.tourists_list_fragment_title) ?: ""
 
     private val viewModel: TouristListViewModel by viewModel()
     private lateinit var touristsAdapter: TouristsAdapter
@@ -48,42 +48,38 @@ class TouristListFragment : ViewBindingFragment<FragmentTouristListBinding>(), M
 
     override fun initViews(savedInstanceState: Bundle?) {
         super.initViews(savedInstanceState)
-
-        setUpToolBar()
         setUpRvTourist()
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.uiState.flowWithLifecycle(viewLifecycleOwner.lifecycle).collect { state ->
-                val (isLoading, tourists, error, errorMsgFromServer, _, _, _, isLoadingMore) = state
+        observeFlow(viewModel.uiState) { state ->
+            val (isLoading, tourists, error, errorMsgFromServer, _, _, _, isLoadingMore) = state
 
-                if (isLoading) {
-                    showSkeletonTouristsLoading()
-                    return@collect
-                }
+            if (isLoading) {
+                showSkeletonTouristsLoading()
+                return@observeFlow
+            }
 
-                isLoadMore = isLoadingMore
+            isLoadMore = isLoadingMore
 
-                if (isLoadMore) {
-                    showLoadMoreProgressIndicator(tourists)
-                    return@collect
-                }
+            if (isLoadMore) {
+                showLoadMoreProgressIndicator(tourists)
+                return@observeFlow
+            }
 
-                hideSkeletonTouristsLoading()
+            hideSkeletonTouristsLoading()
 
-                if (binding.swipeRefresh.isRefreshing) {
-                    binding.swipeRefresh.isRefreshing = false
-                }
+            if (binding.swipeRefresh.isRefreshing) {
+                binding.swipeRefresh.isRefreshing = false
+            }
 
-                if (error != null || errorMsgFromServer != null) {
-                    error?.let {
-                        val msg = context?.getString((error as UiText.StringResource).id) ?: "Others"
-                        showErrorAlertDialog(msg)
-                    } ?: showErrorAlertDialog(errorMsgFromServer ?: "Others")
-                }
+            if (error != null || errorMsgFromServer != null) {
+                error?.let {
+                    val msg = context?.getString((error as UiText.StringResource).id) ?: "Others"
+                    showErrorAlertDialog(msg)
+                } ?: showErrorAlertDialog(errorMsgFromServer ?: "Others")
+            }
 
-                if (tourists.isNotEmpty()) {
-                    touristsAdapter.submitList(tourists)
-                }
+            if (tourists.isNotEmpty()) {
+                touristsAdapter.submitList(tourists)
             }
         }
     }
@@ -120,9 +116,8 @@ class TouristListFragment : ViewBindingFragment<FragmentTouristListBinding>(), M
         }
     }
 
-    private fun setUpToolBar() {
-        val screenName = activity?.getString(R.string.tourists_list_fragment_title) ?: ""
-        (activity as? AppCompatActivity)?.supportActionBar?.title = screenName
+    override fun initializeToolBar() {
+        super.initializeToolBar()
         activity?.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
