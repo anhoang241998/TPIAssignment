@@ -10,7 +10,11 @@
         android:label="TouristListFragment">
         <action
             android:id="@+id/action_touristListFragment_to_touristDetailFragment"
-            app:destination="@id/touristDetailFragment" />
+            app:destination="@id/touristDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -20,5 +24,21 @@
         <argument
             android:name="touristDetail"
             app:argType="com.annguyenhoang.tpiassignment.views.tourist_list.models.Tourist" />
+        <action
+            android:id="@+id/action_touristDetailFragment_to_touristWebViewFragment"
+            app:destination="@id/touristWebViewFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/touristWebViewFragment"
+        android:name="com.annguyenhoang.tpiassignment.views.tourist_webview.TouristWebViewFragment"
+        android:label="TouristWebViewFragment">
+        <argument
+            android:name="url"
+            app:argType="string" />
     </fragment>
 </navigation>

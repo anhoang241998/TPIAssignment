@@ -181,7 +181,8 @@ class TouristListViewModel(
                 id = (res.id ?: -1).toString(),
                 touristTitle = res.name ?: "",
                 touristDescription = res.introduction ?: "",
-                imageUrl = res.image?.firstOrNull()?.src ?: ""
+                imageUrl = res.image?.firstOrNull()?.src ?: "",
+                touristUrl = res.url ?: ""
             )
         } ?: emptyList()
     }
