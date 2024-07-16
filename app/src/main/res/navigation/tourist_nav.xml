@@ -7,5 +7,18 @@
     <fragment
         android:id="@+id/touristListFragment"
         android:name="com.annguyenhoang.tpiassignment.views.tourist_list.TouristListFragment"
-        android:label="TouristListFragment" />
+        android:label="TouristListFragment">
+        <action
+            android:id="@+id/action_touristListFragment_to_touristDetailFragment"
+            app:destination="@id/touristDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/touristDetailFragment"
+        android:name="com.annguyenhoang.tpiassignment.views.tourist_detail.TouristDetailFragment"
+        android:label="TouristDetailFragment">
+        <argument
+            android:name="touristDetail"
+            app:argType="com.annguyenhoang.tpiassignment.views.tourist_list.models.Tourist" />
+    </fragment>
 </navigation>

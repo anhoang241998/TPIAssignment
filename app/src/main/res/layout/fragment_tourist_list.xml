@@ -1,18 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_tourists"
+
+    <ScrollView
+        android:id="@+id/skeleton_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:orientation="vertical"
         android:paddingVertical="10dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_tourist" />
+        android:visibility="gone">
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/item_tourist" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="10dp" />
+
+            <include layout="@layout/item_tourist" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="10dp" />
+
+            <include layout="@layout/item_tourist" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="10dp" />
+
+            <include layout="@layout/item_tourist" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="10dp" />
+
+            <include layout="@layout/item_tourist" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="10dp" />
+
+            <include layout="@layout/item_tourist" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="10dp" />
+
+            <include layout="@layout/item_tourist" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_tourists"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingVertical="10dp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_tourist" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</FrameLayout>

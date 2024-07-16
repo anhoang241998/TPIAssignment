@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.annguyenhoang.tpiassignment.R
 import com.annguyenhoang.tpiassignment.databinding.ActivityTouristBinding
@@ -44,6 +45,10 @@ class TouristActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         binding.appToolbar.setupWithNavController(navController, appBarConfiguration)
         setSupportActionBar(binding.appToolbar)
+
+        binding.appToolbar.setNavigationOnClickListener {
+            navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        }
     }
 
 }

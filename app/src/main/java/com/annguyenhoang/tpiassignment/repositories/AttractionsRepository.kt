@@ -1,9 +1,8 @@
 package com.annguyenhoang.tpiassignment.repositories
 
-import com.annguyenhoang.tpiassignment.core.network.ApiException
 import com.annguyenhoang.tpiassignment.core.network.ApiResponseHandler
 import com.annguyenhoang.tpiassignment.models.remote.AttractionsApi
-import com.annguyenhoang.tpiassignment.models.remote.responses.AttractionResponse
+import com.annguyenhoang.tpiassignment.models.remote.responses.AttractionsResponse
 
 class AttractionsRepository(
     private val api: AttractionsApi,
@@ -16,17 +15,13 @@ class AttractionsRepository(
         nlat: Double? = null,
         elong: Double? = null,
         page: Int? = 1
-    ): Result<List<AttractionResponse>>? {
-        var result: Result<List<AttractionResponse>>? = null
+    ): Result<AttractionsResponse>? {
+        var result: Result<AttractionsResponse>? = null
 
         apiResponseHandler.safeCall(
             request = { api.getAllAttractions(lang, categoryIds, nlat, elong, page) },
             onRequestSuccess = { response ->
-                response.data?.let { attractionsResponse ->
-                    result = Result.success(attractionsResponse)
-                } ?: run {
-                    result = Result.failure(ApiException.Other)
-                }
+                result = Result.success(response)
             },
             onRequestFailed = { e ->
                 result = Result.failure(e)

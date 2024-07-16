@@ -22,6 +22,7 @@ timber = "5.0.1"
 desugar = "2.0.4"
 coil = "2.6.0"
 skeletonLoading = "5.0.0"
+swipeRefresh = "1.2.0-alpha01"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -66,6 +67,9 @@ desugar = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref 
 
 # skeleton loading
 skeletonLoading = { group = "com.faltenreich", name = "skeletonlayout", version.ref = "skeletonLoading" }
+
+# swipe refresh
+swipe-refresh = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swipeRefresh" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

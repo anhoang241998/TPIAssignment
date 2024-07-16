@@ -32,7 +32,7 @@ abstract class ViewBindingFragment<VB : ViewBinding> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViews()
+        initViews(savedInstanceState)
         initControls()
     }
 
@@ -41,7 +41,7 @@ abstract class ViewBindingFragment<VB : ViewBinding> : Fragment() {
         _binding = null
     }
 
-    open fun initViews() {}
+    open fun initViews(savedInstanceState: Bundle?) {}
     open fun initControls() {}
 
 }

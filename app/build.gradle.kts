@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.androidx.navigation.safe.args)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -90,4 +91,7 @@ dependencies {
 
     // skeleton loading
     implementation(libs.skeletonLoading)
+
+    // swipe refresh layout
+    implementation(libs.swipe.refresh)
 }

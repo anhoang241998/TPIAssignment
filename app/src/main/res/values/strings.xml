@@ -4,6 +4,8 @@
     <string name="tourists_list_fragment_title">TaipeiTour</string>
     <string name="switch_language">Switch language</string>
 
+    <string name="error_dialog_title">Error</string>
+    <string name="error_dialog_btn_title">OK</string>
     <string name="bad_gateway_error">The server was unavailable now.</string>
     <string name="bad_request_error">Request params was not corrected format. Please try again.</string>
     <string name="conflict_error">Your request was existed.</string>
