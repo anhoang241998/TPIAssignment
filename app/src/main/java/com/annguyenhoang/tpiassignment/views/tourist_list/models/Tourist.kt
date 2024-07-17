@@ -10,6 +10,8 @@ data class Tourist(
     val touristTitle: String,
     val touristDescription: String,
     val imageUrl: String,
+    val touristAddress: String,
+    val touristUpdatedTime: String,
     val touristUrl: String
 ) : Parcelable, TouristRecyclerViewType() {
     override val viewType: Int

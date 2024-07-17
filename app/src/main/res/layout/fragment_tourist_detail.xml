@@ -54,6 +54,58 @@
                 android:layout_height="10dp" />
 
             <TextView
+                android:id="@+id/tv_address_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="12dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:text="@string/tv_address" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="12dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:text="@string/tv_address" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/tv_last_update_time_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="12dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:text="@string/last_updated_time" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
+                android:id="@+id/tv_last_update_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="12dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:text="@string/last_updated_time" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
                 android:id="@+id/linkTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

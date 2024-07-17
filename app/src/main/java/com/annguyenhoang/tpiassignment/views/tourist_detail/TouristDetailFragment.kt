@@ -69,6 +69,9 @@ class TouristDetailFragment : ViewBindingFragment<FragmentTouristDetailBinding>(
                 binding.linkTextView.text = spannableString
                 binding.linkTextView.movementMethod = LinkMovementMethod.getInstance()
             }
+
+            binding.tvAddress.text = touristAddress
+            binding.tvLastUpdateTime.text = touristUpdatedTime
         }
     }
 
