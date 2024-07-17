@@ -15,7 +15,7 @@ This project showcases tourist attractions in Taipei and includes language switc
 
 ## Demo
 
-<!-- Demo apk: [apk](https) -->
+Demo apk: [apk](https://drive.google.com/file/d/1Q1C0Q7elITtSGfW4YV6LjCgfPs6OS87B/view?usp=sharing)
 
 ## Installation
 
