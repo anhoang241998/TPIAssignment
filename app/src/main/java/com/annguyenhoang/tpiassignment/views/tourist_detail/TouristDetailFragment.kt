@@ -8,7 +8,6 @@ import android.text.style.ClickableSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -28,16 +27,13 @@ class TouristDetailFragment : ViewBindingFragment<FragmentTouristDetailBinding>(
 
     private val args by navArgs<TouristDetailFragmentArgs>()
 
+    override val screenName: String
+        get() = args.touristDetail.touristTitle
+
     override fun initViews(savedInstanceState: Bundle?) {
         super.initViews(savedInstanceState)
-        setUpToolBar()
         paddingSafeView()
         mapDetailsArgToViews()
-    }
-
-    private fun setUpToolBar() {
-        val screenName = args.touristDetail.touristTitle
-        (activity as? AppCompatActivity)?.supportActionBar?.title = screenName
     }
 
     private fun paddingSafeView() {

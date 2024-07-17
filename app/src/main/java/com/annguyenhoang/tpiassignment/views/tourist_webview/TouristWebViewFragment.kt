@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.webkit.WebViewClient
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.navArgs
 import com.annguyenhoang.tpiassignment.databinding.FragmentTouristWebviewBinding
 import com.annguyenhoang.tpiassignment.utils.ViewBindingFragment
@@ -18,18 +17,16 @@ class TouristWebViewFragment : ViewBindingFragment<FragmentTouristWebviewBinding
 
     private val args by navArgs<TouristWebViewFragmentArgs>()
 
+    override val screenName: String
+        get() = ""
+
     override fun initViews(savedInstanceState: Bundle?) {
         super.initViews(savedInstanceState)
-        setUpToolBar()
         binding.webview.apply {
             settings.javaScriptEnabled = true
             webViewClient = WebViewClient()
             loadUrl(args.url)
         }
-    }
-
-    private fun setUpToolBar() {
-        (activity as? AppCompatActivity)?.supportActionBar?.title = ""
     }
 
 }
